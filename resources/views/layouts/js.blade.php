@@ -27,4 +27,5 @@
 <script src="/assets/vendor/visible/visible.js"></script>
 <script src="/assets/vendor/wow/wow.min.js"></script>
 <script src="/assets/js/scripts.js"></script>
+<script src="/js/app.js"></script>
 <!-- endinject -->

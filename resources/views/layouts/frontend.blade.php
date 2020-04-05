@@ -11,6 +11,8 @@
 
   @include('layouts.header')
 
+  @yield('hero')
+
       @yield('page-title')
 
       <section class="body-content ">
@@ -22,7 +24,6 @@
       @include('layouts.footer')
 
   </div>
-
 
   @include('layouts.js')
   @yield('script')
