@@ -6,7 +6,7 @@
 
         <!--logo start-->
         <a href="index.html" class="logo-brand">
-          <img class="retina" src="assets/img/logo.png" alt="Massive">
+          <img class="retina" src="/assets/img/logo.png" alt="Massive">
         </a>
         <!--logo end-->
 
@@ -29,7 +29,7 @@
                     <tr>
                       <td>
                         <a href="#">
-                          <img src="assets/img/product/1.jpg" alt="" />
+                          <img src="/assets/img/product/1.jpg" alt="" />
                         </a>
                       </td>
                       <td><a href="#"> Women's Top</a>
@@ -38,14 +38,14 @@
                       <td>$ 122.00</td>
                       <td>
                         <a href="#" class="close">
-                          <img src="assets/img/product/close.png" alt="" />
+                          <img src="/assets/img/product/close.png" alt="" />
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
                         <a href="#">
-                          <img src="assets/img/product/2.jpg" alt="" />
+                          <img src="/assets/img/product/2.jpg" alt="" />
                         </a>
                       </td>
                       <td><a href="#"> Men's T-shirt</a>
@@ -54,7 +54,7 @@
                       <td>$ 122.00</td>
                       <td>
                         <a href="#" class="close">
-                          <img src="assets/img/product/close.png" alt="" />
+                          <img src="/assets/img/product/close.png" alt="" />
                         </a>
                       </td>
                     </tr>

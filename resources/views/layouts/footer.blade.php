@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-3">
           <a href="#" class="m-bot-20 footer-logo">
-            <img class="retina" src="assets/img/logo-dark.png" alt="" />
+            <img class="retina" src="/assets/img/logo-dark.png" alt="" />
           </a>
           <p>Massive is fully responsible, performance oriented and SEO optimized, retina ready WordPress theme.</p>
 
@@ -44,47 +44,47 @@
           <ul class="r-work">
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/1.jpg" alt="" />
+                <img src="/assets/img/recent-work/1.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/2.jpg" alt="" />
+                <img src="/assets/img/recent-work/2.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/3.jpg" alt="" />
+                <img src="/assets/img/recent-work/3.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/4.jpg" alt="" />
+                <img src="/assets/img/recent-work/4.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/5.jpg" alt="" />
+                <img src="/assets/img/recent-work/5.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/6.jpg" alt="" />
+                <img src="/assets/img/recent-work/6.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/7.jpg" alt="" />
+                <img src="/assets/img/recent-work/7.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/8.jpg" alt="" />
+                <img src="/assets/img/recent-work/8.jpg" alt="" />
               </a>
             </li>
             <li>
               <a href="#">
-                <img src="assets/img/recent-work/9.jpg" alt="" />
+                <img src="/assets/img/recent-work/9.jpg" alt="" />
               </a>
             </li>
           </ul>
