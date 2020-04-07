@@ -26,3 +26,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ $.ajaxSetup({
+   headers: {
+     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   }
+ });
+
+deleteProduct = function(id) {
+  let result = confirm('Do you want to delete the post?');
+  if (result) {
+    let actionUrl = '/products/' + id;
+    $.post(actionUrl, { _method:'delete' }).done(function(){
+      location.href = '/products/admin'; 
+    });
+  }
+};

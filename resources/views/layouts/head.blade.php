@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Mosaddek">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--favicon icon-->
     <link rel="icon" type="image/png" href="/assets/img/favicon.png">
@@ -24,7 +25,7 @@
     <link rel="stylesheet" href="/assets/css/shortcodes.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/default-theme.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/frontend.css">
     <!-- endinject -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
