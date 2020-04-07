@@ -19,45 +19,32 @@
           <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
 
           <li class="cart-info">
-            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> cart(2)</a>
+            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> cart(87)</a>
             <div class="megamenu megamenu-quarter-width ">
               <div class="megamenu-row">
                 <div class="col12">
 
                   <!--cart-->
                   <table class="table cart-table-list table-responsive">
+                    @foreach($products as $key => $product)
                     <tr>
                       <td>
                         <a href="#">
-                          <img src="/assets/img/product/1.jpg" alt="" />
+                          <img src="{{ $product->image}}" alt="" />
                         </a>
                       </td>
-                      <td><a href="#"> Women's Top</a>
+                      <td><a href="#"> {{$product->name}} </a>
                       </td>
-                      <td>X4</td>
-                      <td>$ 122.00</td>
+                      <td>X87</td>
+                      <td>${{$product->price * 87}}</td>
                       <td>
                         <a href="#" class="close">
                           <img src="/assets/img/product/close.png" alt="" />
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <a href="#">
-                          <img src="/assets/img/product/2.jpg" alt="" />
-                        </a>
-                      </td>
-                      <td><a href="#"> Men's T-shirt</a>
-                      </td>
-                      <td>X4</td>
-                      <td>$ 122.00</td>
-                      <td>
-                        <a href="#" class="close">
-                          <img src="/assets/img/product/close.png" alt="" />
-                        </a>
-                      </td>
-                    </tr>
+                    @endforeach
+
                   </table>
 
                   <div class="total-cart pull-right">
