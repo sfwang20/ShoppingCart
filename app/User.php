@@ -37,11 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function carts()
+    public function cart()
     {
-      return $this->hasMany('App\Cart');
+      return $this->hasOne('App\Cart');
     }
-    
+
     public function orders()
     {
       return $this->hasMany('App\Order');
