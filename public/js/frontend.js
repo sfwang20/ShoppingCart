@@ -12858,6 +12858,25 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+createCartItem = function createCartItem(id) {
+  var actionUrl = '/carts';
+  $.ajax({
+    method: "POST",
+    url: actionUrl,
+    data: {
+      id: id
+    }
+  }).done(function () {
+    location.reload();
+  });
+};
+
 /***/ }),
 
 /***/ 1:

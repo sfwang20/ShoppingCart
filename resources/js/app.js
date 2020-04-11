@@ -38,7 +38,7 @@ deleteProduct = function(id) {
   if (result) {
     let actionUrl = '/products/' + id;
     $.post(actionUrl, { _method:'delete' }).done(function(){
-      location.href = '/products/admin'; 
+      location.href = '/products/admin';
     });
   }
 };

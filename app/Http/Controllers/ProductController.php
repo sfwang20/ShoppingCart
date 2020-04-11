@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
@@ -11,16 +14,38 @@ class ProductController extends Controller
     //Display shop
     public function index()
     {
+      $cart = $this->getCart();
       $products = Product::all();
-      return view('products.shop', ['products' => $products]);
+      return view('products.shop', ['products' => $products, 'cart' => $cart]);
     }
 
     //Display shop-single
     public function show(Product $product)
     {
-      return view('products.shop-single', ['products' => $products]);
+      $cart = $this->getCart();
+      $products = Product::all();
+      return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart]);
     }
 
+    //massive home page
+    public function home()
+    {
+      $products = Product::all();
+      return view('index', ['products' => $products]);
+    }
+
+    public function getCart()
+    {
+      if (Auth::user()->cart) {
+        $cart = Auth::user()->cart;
+      }
+      else {
+        $cart = new Cart;
+        $cart->user_id = Auth::id();
+        $cart->save();
+      }
+      return $cart;
+    }
     //Back-end management
     //admin panel
     public function admin()
@@ -78,7 +103,7 @@ class ProductController extends Controller
 
       $product->image = $path;
       $product->image_alt = $path_alt;
-      
+
       $product->save();
 
       return redirect('/products/admin');
