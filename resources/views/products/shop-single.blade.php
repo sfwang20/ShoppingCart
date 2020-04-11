@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
           <li><a href="/">Home</a>
           </li>
-          <li><a href="/shop">Product</a>
+          <li><a href="/products">Product</a>
           </li>
           <li class="active">Shop Single</li>
         </ol>
@@ -28,21 +28,21 @@
           <div class="post-single">
             <div class="post-slider-thumb post-img text-center">
               <ul class="slides">
-                <li data-thumb="assets/img/product/8.jpg">
+                <li data-thumb="{{ $product->image }}">
                   <a href="javascript:;" title="Freshness Photo">
-                    <img src="assets/img/product/8.jpg" alt="" />
+                    <img src="{{ $product->image }}" alt="" />
                   </a>
                 </li>
-                <li data-thumb="assets/img/product/7.jpg">
+                <li data-thumb="{{ $product->image_alt }}">
                   <a href="javascript:;" title="Awesome Lightbox">
-                    <img src="assets/img/product/7.jpg" alt="" />
+                    <img src="{{ $product->image_alt }}" alt="" />
                   </a>
                 </li>
-                <li data-thumb="assets/img/product/6.jpg">
+                <!-- <li data-thumb="assets/img/product/6.jpg">
                   <a href="javascript:;" title="Massive UI Components">
                     <img src="assets/img/product/6.jpg" alt="" />
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -50,23 +50,27 @@
       </div>
       <div class="col-md-7">
         <div class="product-title">
-          <h2 class="text-uppercase">Pellentesque Habitant</h2>
+          <h2 class="text-uppercase">{{ $product->name }}</h2>
         </div>
 
         <div class="product-price txt-xl">
-          <span class="border-tb p-tb-10"> $179.99 <del>$279.00</del></span>
+          @if( $product->price_origin > $product->price )
+          <span class="border-tb p-tb-10"> ${{ $product->price }} <del>${{ $product->price_origin}}</del></span>
+          @else
+          <span class="border-tb p-tb-10"> ${{ $product->price }}</span>
+          @endif
         </div>
 
         <ul class="portfolio-meta m-bot-10 m-top-10">
-          <li><span> Item No </span> 09087</li>
+          <li><span> Item No </span> {{ $product->id }}</li>
           <li><span> Condition </span> New</li>
         </ul>
         <p>
-          Phasellus fringilla suscipit risus nec eleifend. Pellentesque eu quam sem, ac malesuada leo sem quam pellente. Awesome sliders give you the opportunity to showcase your content. Advanced theme options panel to easily customize your website.
+          {{ $product->description }}
         </p>
 
         <ul class="portfolio-meta m-bot-10 stock">
-          <li><span><strong class="number-item"> 390</strong> Item </span>  <span class="status">In Stock</span>
+          <li><span><strong class="number-item"> {{ $products->where('name', $product->name)->sum('stock') }}</strong> Item </span>  <span class="status">In Stock</span>
           </li>
         </ul>
         <div class="p-values">
@@ -88,7 +92,7 @@
               <label>Quantity</label>
             </li>
             <li>
-              <input id="demo0" type="text" value="0" name="demo0" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500"
+              <input id="demo0" type="text" value="0" name="quantity" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500"
               data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default"
               data-bts-button-up-class="btn btn-default" />
             </li>
@@ -98,7 +102,7 @@
       </div>
 
       <div class="clearfix">
-        <a href="#" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+        <a href="/carts" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
       </div>
     </div>
   </div>
@@ -122,10 +126,7 @@
           <div class="tab-content">
             <div id="tab-one" class="tab-pane active">
               <h4 class="text-uppercase">Product Description</h4>
-              Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet diam, congue laoreet elit metus eget diam. Proin ac metus diam. In quis scelerisque velit. Proin pellentesque neque ut scelerisque dapibus. Praesent
-              elementum feugiat dignissim. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet diam, congue laoreet elit metus eget diam. Proin ac metus diam. In quis
-              scelerisque velit. Proin pellentesque neque ut scelerisque dapibus. Praesent elementum feugiat dignissim. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque mattis, leo quam aliquet
-              diam, congue laoreet elit metus eget diam. Proin ac metus diam.
+              {{ $product->description }}
             </div>
             <div id="tab-two" class="tab-pane">
               <table class="table table-striped table-bordered">
