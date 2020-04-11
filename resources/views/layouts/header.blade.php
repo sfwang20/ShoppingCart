@@ -14,49 +14,48 @@
         <ul class="menuzord-menu menuzord-right c-nav_s-standard">
           <li><a href="/">Home</a></li>
 
-          <li class="active"><a href="/shop">Shop</a></li>
+          <li class="active"><a href="/products">Shop</a></li>
 
           <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
 
           <li class="cart-info">
-            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> cart(87)</a>
+            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> cart({{ $cart->products()->sum('quantity') }})</a>
             <div class="megamenu megamenu-quarter-width ">
               <div class="megamenu-row">
                 <div class="col12">
 
                   <!--cart-->
                   <table class="table cart-table-list table-responsive">
-                    @foreach($products as $key => $product)
+                  @if($cart->products())
+                    @foreach($cart->products as $key => $product)
                     <tr>
                       <td>
-                        <a href="#">
+                        <a href="/products/{{ $product->id }}">
                           <img src="{{ $product->image}}" alt="" />
                         </a>
                       </td>
-                      <td><a href="#"> {{$product->name}} </a>
+                      <td><a href="/products/{{ $product->id }}"> {{$product->name}} </a>
                       </td>
-                      <td>X87</td>
-                      <td>${{$product->price * 87}}</td>
+                      <td>X{{ $product->pivot->quantity }}</td>
+                      <td>${{ $product->price * $product->pivot->quantity }}</td>
                       <td>
-                        <a href="#" class="close">
+                        <a onclick="deleteCartItem( {{$product->id}} )" class="close">
                           <img src="/assets/img/product/close.png" alt="" />
                         </a>
                       </td>
                     </tr>
                     @endforeach
-
+                  @endif
                   </table>
 
                   <div class="total-cart pull-right">
                     <ul>
-                      <li><span>Sub Total</span>  <span>$ 2000.00 </span>
-                      </li>
-                      <li><span>Total </span>  <span>$ 2000.00 </span>
+                      <li><span>Total </span>  <span>$  </span>
                       </li>
                     </ul>
                   </div>
                   <div class="s-cart-btn pull-right">
-                    <a href="/cart" class="btn btn-small btn-theme-color"> View cart</a>
+                    <a href="/carts" class="btn btn-small btn-theme-color"> View cart</a>
                     <a href="#" class="btn btn-small btn-dark-solid"> Checkout</a>
                   </div>
                   <!--cart-->

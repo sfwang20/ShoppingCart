@@ -11,27 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', 'ProductController@home');
+
+
+
+Route::middleware(['auth'])->group(function()
+{ Route::get('/products/admin', 'ProductController@admin');
+  Route::get('/products/show/{product}', 'ProductController@showByAdmin');
+  Route::resource('products', 'ProductController')->except('show', 'index', 'home');
+  Route::post('/carts', 'CartController@store');
+  Route::delete('/carts/{product}', 'CartController@destroy');
+  Route::get('/carts', 'CartController@show');
 });
-// Route::get('/shop', function () {
-//     return view('shop');
-// });
 
-Route::get('/cart', function () {
-    return view('cart');
+Route::get('/products', 'ProductController@index');
+Route::get('/products/{product}', 'ProductController@show');
+
+Route::get('/carts', function () {
+    return view('carts.index');
 });
-
-// Route::get('/shop-single', function () {
-//     return view('shop-single');
-// });
-
-Route::get('/products/admin', 'ProductController@admin');
-Route::get('/products/show/{product}', 'ProductController@showByAdmin');
-Route::resource('products', 'ProductController');
-
-
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

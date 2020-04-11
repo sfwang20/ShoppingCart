@@ -7,7 +7,7 @@
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li class="active">Product</li>
-            <li><a href="/cart">Cart</a></li>
+            <li><a href="/carts">Cart</a></li>
         </ol>
     </div>
 </section>
@@ -52,10 +52,10 @@
             <!--product list-->
             <div class="product-list">
               <div class="product-img">
-                <a href="/shop-single">
+                <a href="/products/{{$product->id}}">
                   <img src="{{ $product->image }}" alt="" />
                 </a>
-                <a href="/shop-single">
+                <a href="/products/{{$product->id}}">
                   <img src="{{ $product->image_alt }}" alt="" />
                 </a>
                 @if( $product->price < $product->price_origin)
@@ -65,7 +65,7 @@
                 @endif
               </div>
               <div class="product-title">
-                <h5><a href="/shop-single">{{ $product->name }}</a></h5>
+                <h5><a href="/products/{{$product->id}}">{{ $product->name }}</a></h5>
               </div>
               <div class="product-price">
                 @if($product->price < $product->price_origin)
@@ -82,7 +82,7 @@
                 <i class="fa fa-star-o"></i>
               </div>
               <div class="product-btn">
-                <a href="#" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                <a onclick="createCartItem( {{$product->id}} )" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
               </div>
             </div>
             <!--product list-->
