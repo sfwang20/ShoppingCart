@@ -10,7 +10,9 @@ class Product extends Model
 
   public function carts()
   {
-    return $this->belongsToMany('App\Cart');
+    return $this->belongsToMany('App\Cart')
+                ->withPivot('quantity')
+                ->withTimestamps();
   }
 
 }
