@@ -9,7 +9,7 @@
 
   <div class="wrapper">
 
-  @include('layouts.header', ['products'=> $products])
+  @include('layouts.header', ['products' => (isset($products))? $products : null])
 
   @yield('hero')
 
