@@ -6,8 +6,8 @@
         <h4 class="text-uppercase">Shin-Fu's Shop</h4>
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
-            <li class="active">Product</li>
-            <li><a href="/carts">Cart</a></li>
+            <li class="active">Shop</li>
+            <li><a href="/carts">Shopping Cart</a></li>
         </ol>
     </div>
 </section>
