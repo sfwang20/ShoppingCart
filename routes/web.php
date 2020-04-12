@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function()
   Route::put('/carts/{product}', 'CartController@update');
   Route::get('/carts', 'CartController@index');
 
+  Route::post('/orders', 'OrderController@store');
+  Route::get('/orders', 'OrderController@index');
+
 });
 
 Route::get('/products', 'ProductController@index');
