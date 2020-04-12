@@ -12877,6 +12877,37 @@ createCartItem = function createCartItem(id) {
   });
 };
 
+deleteCartItem = function deleteCartItem(id) {
+  var actionUrl = '/carts/' + id;
+  $.ajax({
+    method: "DELETE",
+    url: actionUrl,
+    data: {
+      id: id
+    }
+  }).done(function () {
+    location.reload();
+  });
+};
+
+updateCartItem = function updateCartItem(id, event) {
+  var actionUrl = '/carts/' + id;
+  setTimeout(function () {
+    var quantity = $(event.target).closest('.cart-action').find('input').val();
+    console.log(quantity);
+    $.ajax({
+      method: "PUT",
+      url: actionUrl,
+      data: {
+        id: id,
+        quantity: quantity
+      }
+    }).done(function () {
+      location.reload();
+    });
+  }, 10);
+};
+
 /***/ }),
 
 /***/ 1:

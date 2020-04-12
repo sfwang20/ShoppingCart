@@ -43,4 +43,32 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
       .done(function() {
         location.reload();
       });
- };
+  };
+
+  deleteCartItem = function(id) {
+    let actionUrl = '/carts/' + id;
+    $.ajax({
+       method: "DELETE",
+       url: actionUrl,
+       data: { id }
+     })
+       .done(function() {
+         location.reload();
+       });
+  };
+
+  updateCartItem = function(id,event) {
+    let actionUrl = '/carts/' + id;
+    setTimeout(function(){
+      let quantity = $(event.target).closest('.cart-action').find('input').val();
+      console.log(quantity);
+      $.ajax({
+         method: "PUT",
+         url: actionUrl,
+         data: { id ,quantity }
+       })
+         .done(function() {
+           location.reload();
+         });
+      }, 10);
+  };
