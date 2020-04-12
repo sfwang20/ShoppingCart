@@ -50,7 +50,7 @@
 
                   <div class="total-cart pull-right">
                     <ul>
-                      <li><span>Total </span>  <span>$  </span>
+                      <li><span>Total </span>  <span>$ {{$total}} </span>
                       </li>
                     </ul>
                   </div>

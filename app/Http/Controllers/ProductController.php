@@ -15,23 +15,27 @@ class ProductController extends Controller
     public function index()
     {
       $cart = $this->getCart();
+      $total = $this->getTotal($cart);
       $products = Product::all();
-      return view('products.shop', ['products' => $products, 'cart' => $cart]);
+      return view('products.shop', ['products' => $products, 'cart' => $cart, 'total' => $total]);
     }
 
     //Display shop-single
     public function show(Product $product)
     {
       $cart = $this->getCart();
+      $total = $this->getTotal($cart);
       $products = Product::all();
-      return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart]);
+      return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart, 'total' => $total]);
     }
 
     //massive home page
     public function home()
     {
       $products = Product::all();
-      return view('index', ['products' => $products]);
+      $cart = $this->getCart();
+      $total = $this->getTotal($cart);
+      return view('index', ['products' => $products, 'cart' => $cart, 'total' => $total]);
     }
 
     public function getCart()
@@ -114,5 +118,17 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
       $product->delete();
+    }
+
+    public function getTotal($cart)
+    {
+      if ($cart->products()) {
+        $total = 0;
+        foreach($cart->products as $key => $product) {
+          $total_each = $product->price * $product->pivot->quantity;
+          $total += $total_each;
+        }
+      }
+      return $total;
     }
 }
