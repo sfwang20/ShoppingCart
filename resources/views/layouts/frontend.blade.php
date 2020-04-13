@@ -8,8 +8,15 @@
   @include('layouts.preloader')
 
   <div class="wrapper">
-
-  @include('layouts.header', ['products' => (isset($products))? $products : null])
+  @if(isset($cart))
+    @if(isset($products))
+      @include('layouts.header', ['products' => $products])
+    @else
+      @include('layouts.header')
+    @endif
+  @else
+    @include('layouts.header_out')
+  @endif
 
   @yield('hero')
 
