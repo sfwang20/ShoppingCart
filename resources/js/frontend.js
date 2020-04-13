@@ -42,6 +42,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
     })
       .done(function() {
         location.reload();
+      }).fail(function() {
+        alert('You need to log in!');
       });
   };
 
