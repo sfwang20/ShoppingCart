@@ -37,13 +37,6 @@
           <div class="pull-left m-top-5 m-left-10">
             Showing 1–8 of {{ $products->count() }} results
           </div>
-
-          <div class="pull-right shop-view-mode">
-            <a href="#"> <i class="fa fa-th-large"></i>
-            </a>
-            <a href="#"> <i class="fa fa-th-list"></i>
-            </a>
-          </div>
         </div>
         <!--product option-->
         <div class="row">

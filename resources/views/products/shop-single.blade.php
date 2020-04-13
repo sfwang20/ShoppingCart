@@ -9,9 +9,9 @@
         <ol class="breadcrumb">
           <li><a href="/">Home</a>
           </li>
-          <li><a href="/products">Product</a>
+          <li><a href="/products">Shop</a>
           </li>
-          <li class="active">Shop Single</li>
+          <li class="active">Product</li>
         </ol>
       </div>
     </div>
@@ -79,10 +79,7 @@
               <span> Size </span>
               <span>
                 <select class="form-control">
-                  <option>S</option>
-                  <option>M</option>
-                  <option>L</option>
-                  <option>XL</option>
+                  <option>{{$product->size}}</option>
                 </select>
               </span>
             </li>
@@ -92,7 +89,7 @@
               <label>Quantity</label>
             </li>
             <li>
-              <input id="demo0" type="text" value="0" name="quantity" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500"
+              <input type="text" value="0" name="quantity" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500"
               data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default"
               data-bts-button-up-class="btn btn-default" />
             </li>
@@ -102,7 +99,7 @@
       </div>
 
       <div class="clearfix">
-        <a href="/carts" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+        <a onclick="createCartItem( {{$product->id}} )" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
       </div>
     </div>
   </div>
