@@ -14,28 +14,43 @@ class ProductController extends Controller
     //Display shop
     public function index()
     {
-      $cart = $this->getCart();
-      $total = $this->getTotal($cart);
       $products = Product::all();
-      return view('products.shop', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+
+      if (Auth::check()) {
+        $cart = $this->getCart();
+        $total = $this->getTotal($cart);
+
+        return view('products.shop', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+      }
+      else
+        return view('products.shop', ['products' => $products]);
     }
 
     //Display shop-single
     public function show(Product $product)
     {
-      $cart = $this->getCart();
-      $total = $this->getTotal($cart);
       $products = Product::all();
-      return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart, 'total' => $total]);
+      if (Auth::check()) {
+        $cart = $this->getCart();
+        $total = $this->getTotal($cart);
+        return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart, 'total' => $total]);
+      }
+      else {
+        return view('products.shop-single', ['product' => $product, 'products' => $products]);
+      }
     }
 
     //massive home page
     public function home()
     {
-      $products = Product::all();
-      $cart = $this->getCart();
-      $total = $this->getTotal($cart);
-      return view('index', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+      if(Auth::check()) {
+        $products = Product::all();
+        $cart = $this->getCart();
+        $total = $this->getTotal($cart);
+        return view('index', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+      }
+      else
+        return view('index');
     }
 
     public function getCart()
