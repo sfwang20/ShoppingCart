@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    // public function index()
-    // {
-    //   return view('/orders.index');
-    // }
+    public function admin()
+    {
+      $orders = Order::all();
+      return view('orders.admin', ['orders' => $orders]);
+    }
 
     public function store(Request $request)
     {
@@ -24,6 +25,28 @@ class OrderController extends Controller
       $order->cart_id = Auth::user()->cart->id;
       $order->save();
 
-      return view('/orders.index', ['order' => $order]);
+      $cart = Auth::user()->cart;
+      // $cart->products()->detach();
+      $total = 0;
+
+      return view('orders.index', ['order' => $order, 'cart'=>$cart, 'total'=>$total]);
+    }
+
+    public function edit(Order $order)
+    {
+      return view('orders.edit', ['order' => $order]);
+    }
+
+    public function update(Request $request, Order $order)
+    {
+      $order->fill($request->all());
+      $order->save();
+      $orders = Order::all();
+      return view('orders.admin', ['orders' => $orders]);
+    }
+
+    public function destroy(Order $order)
+    {
+      $order->delete();
     }
 }
