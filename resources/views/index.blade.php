@@ -22,9 +22,6 @@
 </div>
 @endsection
 
-@section('page-title')
-@endsection
-
 
 @section('content')
 <!--promo-->
