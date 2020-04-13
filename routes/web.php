@@ -27,7 +27,13 @@ Route::middleware(['auth'])->group(function()
   Route::get('/carts', 'CartController@index');
 
   Route::post('/orders', 'OrderController@store');
+  Route::delete('/orders/{order}', 'OrderController@destroy');
+  Route::get('/orders/{order}/edit', 'OrderController@edit');
+  Route::put('/orders/{order}', 'OrderController@update');
   Route::get('/orders', 'OrderController@index');
+  Route::get('/orders/admin', 'OrderController@admin');
+  // Route::get('/orders', 'OrderController@index');
+
 
 });
 
