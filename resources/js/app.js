@@ -42,3 +42,13 @@ deleteProduct = function(id) {
     });
   }
 };
+
+deleteOrder = function(id) {
+  let result = confirm('Do you want to delete the order?');
+  if (result) {
+    let actionUrl = '/orders/' + id;
+    $.post(actionUrl, { _method:'delete' }).done(function(){
+      location.href = '/orders/admin';
+    });
+  }
+};

@@ -49542,6 +49542,19 @@ deleteProduct = function deleteProduct(id) {
   }
 };
 
+deleteOrder = function deleteOrder(id) {
+  var result = confirm('Do you want to delete the order?');
+
+  if (result) {
+    var actionUrl = '/orders/' + id;
+    $.post(actionUrl, {
+      _method: 'delete'
+    }).done(function () {
+      location.href = '/orders/admin';
+    });
+  }
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
