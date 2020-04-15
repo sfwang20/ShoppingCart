@@ -26,9 +26,8 @@
     @foreach ($orders as $key => $order)
       <li class="list-group-item clearfix">
         <div class="float-left">
-          <div class="">Order No:{{ $order->id }}</div>
-          <div class="">Name:{{ $order->user->name }}</div>
-          <div class="">Amount:{{ $order->amount }}</div>
+          <div class="">Order No: {{ $order->id }} | Name: {{ $order->user->name }}</div>
+          <div class="">Order status: {{ $order->status }}</div>
         </div>
         <span class="float-right">
           <a href="/orders/{{ $order->id }}/edit" class="btn btn-primary">Edit</a>
