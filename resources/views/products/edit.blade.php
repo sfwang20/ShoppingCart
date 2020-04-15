@@ -75,16 +75,20 @@
           <input type="text" class="form-control" id="stock" name="stock" value="{{ $product->stock }}">
         </div>
       </div>
-      <div class="form-group row">
-        <label for="image" class="col-sm-2 col-form-label">Image</label>
-        <div class="col-sm-10">
-          <input type="file" class="form-control" id="image" name="image" value="{{ $product->image }}">
+      <div class="form-group">
+        <label class="d-block">Image</label>
+        <img width="320" src="{{ $product->image}}" alt="image"/>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="image" name="image">
+          <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
-      <div class="form-group row">
-        <label for="image" class="col-sm-2 col-form-label">Image alt</label>
-        <div class="col-sm-10">
-          <input type="file" class="form-control" id="image_alt" name="image_alt" value="{{ $product->image_alt }}">
+      <div class="form-group">
+        <label class="d-block">Image alt</label>
+        <img width="320" src="{{ $product->image_alt}}" alt="image"/>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="image" name="image_alt">
+          <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
       </div>
       <div class="form-group row">
