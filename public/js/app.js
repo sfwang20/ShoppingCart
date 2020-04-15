@@ -49700,9 +49700,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/shinfu/Documents/shoppingCart/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/shinfu/Documents/shoppingCart/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/shinfu/Documents/shoppingCart/resources/sass/frontend.scss */"./resources/sass/frontend.scss");
+__webpack_require__(/*! /Users/shinfu/Documents/shop/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/shinfu/Documents/shop/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/shinfu/Documents/shop/resources/sass/frontend.scss */"./resources/sass/frontend.scss");
 
 
 /***/ })

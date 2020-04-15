@@ -12919,7 +12919,7 @@ updateCartItem = function updateCartItem(id, event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/shinfu/Documents/shoppingCart/resources/js/frontend.js */"./resources/js/frontend.js");
+module.exports = __webpack_require__(/*! /Users/shinfu/Documents/shop/resources/js/frontend.js */"./resources/js/frontend.js");
 
 
 /***/ })
