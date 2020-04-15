@@ -26,7 +26,7 @@ class AddColumnModifierToCartProductTable extends Migration
     public function down()
     {
         Schema::table('cart_product', function (Blueprint $table) {
-            //
+            $table->dropColumn('quantity');
         });
     }
 }

@@ -16,7 +16,7 @@ class AddColumnsToOrdersTable extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->string('region');
             $table->string('country');
-              $table->string('coupon')->nullable()->change();
+            $table->string('coupon')->nullable()->change();
         });
     }
 
@@ -28,7 +28,9 @@ class AddColumnsToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->dropColumn('region');
+            $table->dropColumn('country');
+            $table->dropColumn('coupon');
         });
     }
 }
