@@ -22,11 +22,13 @@ class OrderController extends Controller
       $order = new Order;
       $order->fill($request->all());
       $order->user_id = Auth::id();
-      $order->cart_id = Auth::user()->cart->id;
+      $order->cart_id = Auth::user()->carts->max('id');
       $order->save();
 
-      $cart = Auth::user()->cart;
-      // $cart->products()->detach();
+      $cart = new Cart;
+      $cart->user_id = Auth::id();
+      $cart->save();
+
       $total = 0;
 
       return view('orders.index', ['order' => $order, 'cart'=>$cart, 'total'=>$total]);

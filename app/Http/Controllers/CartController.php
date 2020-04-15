@@ -54,8 +54,9 @@ class CartController extends Controller
   public function getCart()
   {
     //if user has a cart
-    if (Auth::user()->cart) {
-      $cart = Auth::user()->cart;
+    if (Auth::user()->carts) {
+      $cartId = Auth::user()->carts->max('id');
+      $cart = Auth::user()->carts->find($cartId);
     }
     else {
       $cart = new Cart;
