@@ -116,13 +116,16 @@ class ProductController extends Controller
     {
       $product->fill($request->all());
 
-      $path = $request->file('image')->store('public');
-      $path = str_replace('public/','/storage/', $path);
-      $path_alt = $request->file('image_alt')->store('public');
-      $path_alt = str_replace('public/','/storage/', $path_alt);
-
-      $product->image = $path;
-      $product->image_alt = $path_alt;
+      if (!is_null($request->file('image'))) {
+        $path = $request->file('image')->store('public');
+        $path = str_replace('public/','/storage/', $path);
+        $product->image = $path;
+      }
+      if (!is_null($request->file('image_alt'))) {
+        $path_alt = $request->file('image_alt')->store('public');
+        $path_alt = str_replace('public/','/storage/', $path_alt);
+        $product->image_alt = $path_alt;
+      }
 
       $product->save();
 
