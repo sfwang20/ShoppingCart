@@ -35,4 +35,4 @@ http://shop.shinfu.website
 * Laravel/PHP/MySQL
 * Linux (ubuntu)
 
-
+![image](https://github.com/sfwang20/shop/blob/master/shop.png)
