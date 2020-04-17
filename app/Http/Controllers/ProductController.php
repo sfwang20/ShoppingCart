@@ -55,7 +55,7 @@ class ProductController extends Controller
 
     public function getCart()
     {
-      if (Auth::user()->carts) {
+      if (!(Auth::user()->carts->isEmpty())) {
         $cartId = Auth::user()->carts->max('id');
         $cart = Auth::user()->carts->find($cartId);
       }
@@ -147,6 +147,9 @@ class ProductController extends Controller
           $total_each = $product->price * $product->pivot->quantity;
           $total += $total_each;
         }
+      }
+      else {
+        $total =0;
       }
       return $total;
     }
