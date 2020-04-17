@@ -1,32 +1,27 @@
-# Shopping Cart
+# Blog
 
-模擬真實接案，打造一整個完整購物網站，透過Laravel之MVC架構及RESTful概念實作商品上下架及訂單管理系統之後台管理、購物車CRUD等功能。
+簡潔完整的部落格網站，使用Laravel將既有的view套版並整理調整，前端可瀏覽文章和留言，後端管理則透過關聯式資料庫實現文章、類別(categories)及標籤(tags)的CRUD功能，並有認證(authentication)及授權(authorization)機制，以防止他人對非本人新增之文章進行更新或刪除等操作。
 
 ### Website
 
-http://shop.shinfu.website
+http://blog.shinfu.website
 
 ### 說明
 
-後台商品及訂單管理頁面網址暫略，面試時將Demo展示。
+後台文章/類別/標籤管理頁面網址暫略，面試時將Demo展示。
 
-前台主要頁面:首頁、商品主頁及商品個頁(右上可看購物車)、購物車頁面、結帳後頁面
+前台主要頁面：首頁、文章列表頁及文章個頁
 
 ### 功能
 
-* Register/Login - 輸入帳號密碼進行註冊，之後便可使用該組帳密進行登入。
+* Read - 可瀏覽所有文章，或依文章類別或標籤檢視相關文章。
 
-* Read - 未登入時可瀏覽首頁，商品主頁及個頁。登入後在shop頁面右上角會讀取並顯示屬於您的購物車資料，或者也可至購物車頁面檢視。
+* Create comment - 訪客可於文章底下留言，會自動記錄內容及時間。
 
-* Create - 在商品主頁或個頁於商品下方點選"+ ADD CART"，即可新增商品至購物車。
+* Register/Login (backstage/admin)- 輸入帳號密碼進行註冊，之後便可使用該組帳密進行登入。
 
-* Update - 於購物車頁面，在商品數量輸入後，按下右邊重整按鈕，即可修改商品數量。
+* Post/Category/Tag CRUD (backstage/admin) - 可新增/更新/刪除文章(含tags)，或新增/更新/刪除類別，且更新及刪除功能只能針對自己Create的文章才可操作
 
-* Delete - 在右上角的購物車點選"x"，或在購物車頁面點選垃圾桶按鈕，確認後即可刪除。
-
-* Product Management (backstage) - 可上下架商品或修改商品資訊(即product的CRUD)。
-
-* Order Management (backstage) - 可檢視所有訂單、取消訂單、更改訂單狀態(status)，例如未付款(unpaid)、已出貨(Shipped)等。
 
 
 ### 主要技術
@@ -35,4 +30,4 @@ http://shop.shinfu.website
 * Laravel/PHP/MySQL
 * Linux (ubuntu)
 
-![image](https://github.com/sfwang20/shop/blob/master/shop.png)
+![image](https://github.com/sfwang20/blog/blob/master/blog.png)
