@@ -7,7 +7,6 @@
         <ol class="breadcrumb">
             <li><a href="/">Home</a></li>
             <li class="active">Shop</li>
-            <li><a href="/carts">Shopping Cart</a></li>
         </ol>
     </div>
 </section>
@@ -75,7 +74,9 @@
                 <i class="fa fa-star-o"></i>
               </div>
               <div class="product-btn">
-                <a onclick="createCartItem( {{$product->id}} )" class="btn btn-extra-small btn-dark-border  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                <input type="number" class="form-control cart-quantity" value="1" />
+                <button onclick="createCartItem( {{$product->id}},event )" class="btn btn-extra-small btn-dark-border  ">Add to cart<i class="fa fa-shopping-cart"></i>
+                </button>
               </div>
             </div>
             <!--product list-->

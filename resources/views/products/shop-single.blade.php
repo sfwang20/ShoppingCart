@@ -88,10 +88,8 @@
             <li>
               <label>Quantity</label>
             </li>
-            <li>
-              <input type="text" value="0" name="quantity" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500"
-              data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default"
-              data-bts-button-up-class="btn btn-default" />
+            <li id="quantity">
+              <input type="number" value="1" name="quantity" />
             </li>
 
           </li>
@@ -99,7 +97,7 @@
       </div>
 
       <div class="clearfix">
-        <a onclick="createCartItem( {{$product->id}} )" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+        <a onclick="createCartItem( {{$product->id}}, event )" class="btn btn-medium btn-dark-solid  "><i class="fa fa-shopping-cart"></i> Add to cart</a>
       </div>
     </div>
   </div>
