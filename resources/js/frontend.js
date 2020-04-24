@@ -1,4 +1,4 @@
-/**
+ /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
@@ -33,18 +33,26 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  });
 
 
- createCartItem = function(id) {
+ createCartItem = function(id, event) {
    let actionUrl = '/carts';
-   $.ajax({
-      method: "POST",
-      url: actionUrl,
-      data: { id }
-    })
-      .done(function() {
-        location.reload();
-      }).fail(function() {
-        alert('You need to log in!');
-      });
+   setTimeout(function(){
+     if ($(event.target).is("button"))
+        var quantity = $(event.target).closest('.product-btn').find('input').val();
+     else
+        var quantity = $('#quantity').find('input').val();
+
+     $.ajax({
+        method: "POST",
+        url: actionUrl,
+        data: { id, quantity }
+      })
+        .done(function() {
+          location.reload();
+        })
+        .fail(function() {
+          alert('You need to log in!');
+        })
+      }, 10);
   };
 
   deleteCartItem = function(id) {
@@ -59,11 +67,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
        });
   };
 
-  updateCartItem = function(id,event) {
+  updateCartItem = function(id, event) {
     let actionUrl = '/carts/' + id;
     setTimeout(function(){
       let quantity = $(event.target).closest('.cart-action').find('input').val();
-      console.log(quantity);
       $.ajax({
          method: "PUT",
          url: actionUrl,

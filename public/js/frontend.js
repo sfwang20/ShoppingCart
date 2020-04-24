@@ -12835,10 +12835,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+* First we will load all of this project's JavaScript dependencies which
+* includes Vue and other libraries. It is a great starting point when
+* building robust, powerful web applications using Vue and Laravel.
+*/
 // require('./bootstrap');
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
@@ -12864,19 +12864,23 @@ $.ajaxSetup({
   }
 });
 
-createCartItem = function createCartItem(id) {
+createCartItem = function createCartItem(id, event) {
   var actionUrl = '/carts';
-  $.ajax({
-    method: "POST",
-    url: actionUrl,
-    data: {
-      id: id
-    }
-  }).done(function () {
-    location.reload();
-  }).fail(function () {
-    alert('You need to log in!');
-  });
+  setTimeout(function () {
+    if ($(event.target).is("button")) var quantity = $(event.target).closest('.product-btn').find('input').val();else var quantity = $('#quantity').find('input').val();
+    $.ajax({
+      method: "POST",
+      url: actionUrl,
+      data: {
+        id: id,
+        quantity: quantity
+      }
+    }).done(function () {
+      location.reload();
+    }).fail(function () {
+      alert('You need to log in!');
+    });
+  }, 10);
 };
 
 deleteCartItem = function deleteCartItem(id) {
@@ -12896,7 +12900,6 @@ updateCartItem = function updateCartItem(id, event) {
   var actionUrl = '/carts/' + id;
   setTimeout(function () {
     var quantity = $(event.target).closest('.cart-action').find('input').val();
-    console.log(quantity);
     $.ajax({
       method: "PUT",
       url: actionUrl,
