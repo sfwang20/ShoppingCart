@@ -26,14 +26,14 @@ class CartController extends Controller
     $product = $cart->products->find($request->id);
     //if cart has request's product -> find it and +1
     if ($product != null && $product->id == $request->id) {
-      $product->pivot->quantity += 1;
+      $product->pivot->quantity += $request->quantity;
       $quantity = $product->pivot->quantity;
       $cart->products()->detach($request->id);
       $cart->products()->save($product, ['quantity' => $quantity]);
     }
     //else  use attach() to create a new row in cart_product table
     else {
-      $cart->products()->attach($request->id);
+      $cart->products()->attach($request->id, ['quantity' => $request->quantity]);
     }
   }
 
