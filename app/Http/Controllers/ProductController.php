@@ -20,7 +20,7 @@ class ProductController extends Controller
         $cart = $this->getCart();
         $total = $this->getTotal($cart);
 
-        return view('products.shop', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+        return view('products.shop', ['products' => $products, 'cart' => $cart]);
       }
       else
         return view('products.shop', ['products' => $products]);
@@ -32,8 +32,8 @@ class ProductController extends Controller
       $products = Product::all();
       if (Auth::check()) {
         $cart = $this->getCart();
-        $total = $this->getTotal($cart);
-        return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart, 'total' => $total]);
+        // $total = $this->getTotal($cart);
+        return view('products.shop-single', ['product' => $product, 'products' => $products, 'cart' => $cart]);
       }
       else {
         return view('products.shop-single', ['product' => $product, 'products' => $products]);
@@ -43,11 +43,11 @@ class ProductController extends Controller
     //massive home page
     public function home()
     {
-      if(Auth::check()) {
+      if (Auth::check()) {
         $products = Product::all();
         $cart = $this->getCart();
-        $total = $this->getTotal($cart);
-        return view('index', ['products' => $products, 'cart' => $cart, 'total' => $total]);
+        
+        return view('index', ['products' => $products, 'cart' => $cart]);
       }
       else
         return view('index');

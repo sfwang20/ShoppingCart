@@ -4,7 +4,7 @@
       <nav class="menuzord js-primary-navigation" role="navigation" aria-label="Primary Navigation">
 
         <!--logo start-->
-        <a href="index.html" class="logo-brand">
+        <a href="/" class="logo-brand">
           <img class="retina" src="/assets/img/logo.png" alt="Massive">
         </a>
         <!--logo end-->
@@ -18,40 +18,6 @@
 
           <li class="cart-info">
             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i></a>
-            <div class="megamenu megamenu-quarter-width ">
-              <div class="megamenu-row">
-                <div class="col12">
-
-                  <!--cart-->
-                  <table class="table cart-table-list table-responsive">
-
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a onclick="" class="close">
-                          <img src="/assets/img/product/close.png" alt="" />
-                        </a>
-                      </td>
-                    </tr>
-
-                  </table>
-
-                  <div class="total-cart pull-right">
-                    <ul>
-                      <li><span>Total </span>  <span></span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="s-cart-btn pull-right">
-                    <a href="/carts" class="btn btn-small btn-theme-color"> View cart</a>
-                    <a href="#" class="btn btn-small btn-dark-solid"> Checkout</a>
-                  </div>
-                  <!--cart-->
-
-                </div>
-              </div>
-            </div>
           </li>
 
           <li>

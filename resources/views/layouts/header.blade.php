@@ -5,7 +5,7 @@
       <nav class="menuzord js-primary-navigation" role="navigation" aria-label="Primary Navigation">
 
         <!--logo start-->
-        <a href="index.html" class="logo-brand">
+        <a href="/" class="logo-brand">
           <img class="retina" src="/assets/img/logo.png" alt="Massive">
         </a>
         <!--logo end-->
@@ -18,14 +18,16 @@
           <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
 
           <li class="cart-info">
-            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> cart({{ $cart->products()->sum('quantity') }})</a>
+            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>cart({{ $cart->products()->sum('quantity') }})</a>
+            @if(!$cart->products->isEmpty())
             <div class="megamenu megamenu-quarter-width ">
               <div class="megamenu-row">
                 <div class="col12">
 
                   <!--cart-->
+
                   <table class="table cart-table-list table-responsive">
-                  @if($cart->products())
+
                     @foreach($cart->products as $key => $product)
                     <tr>
                       <td>
@@ -44,15 +46,8 @@
                       </td>
                     </tr>
                     @endforeach
-                  @endif
                   </table>
 
-                  <div class="total-cart pull-right">
-                    <ul>
-                      <li><span>Total </span>  <span>$ {{$total}} </span>
-                      </li>
-                    </ul>
-                  </div>
                   <div class="s-cart-btn pull-right">
                     <a href="/carts" class="btn btn-small btn-theme-color"> View cart</a>
                     <a href="/carts" class="btn btn-small btn-dark-solid"> Checkout</a>
@@ -62,6 +57,7 @@
                 </div>
               </div>
             </div>
+            @endif
           </li>
 
           <li>
