@@ -19,6 +19,21 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+      //validate if input is empty
+      if (empty($request->input('region')) || empty($request->input('address')) || empty($request->input('creditCardNum')))
+        return response()->json('You need to fill in all forms!', 404);
+
+      //validate creditCardNum format
+      $ccNumLength = strlen(trim($request->input('creditCardNum')));
+      if ($ccNumLength != 16 || !is_numeric($ccNumLength))
+        return response()->json('Please enter right Credit Card number', 404);
+
+      //validate if user's cart is empty
+      $cartId = Auth::user()->carts->max('id');
+      $cart_product = Auth::user()->carts->find($cartId)->products;
+      if ($cart_product->isEmpty())
+        return response()->json('Your cart has no item!', 404);
+
       $order = new Order;
       $order->fill($request->all());
       $order->user_id = Auth::id();

@@ -138,15 +138,16 @@
                 </div>
                 <div class="form-group">
                   <label>Region / State *</label>
-                  <input type="text" name="region" class="form-control">
+                  <input type="text" name="region" class="form-control" required>
                 </div>
                 <div class="form-group">
                   <label>Address *</label>
-                  <input type="text" name="address" class="form-control">
+                  <input type="text" name="address" class="form-control" required>
                 </div>
                 <div class="form-group">
-                  <label>Cread Card Number *</label>
-                  <input type="text" name="creditCardNum" class="form-control">
+                  <label>Credit Card Number *</label>
+                  <input name="creditCardNum" class="form-control" type="tel" inputmode="numeric"
+                        pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required>
                 </div>
                 <input type="hidden" name="amount" value="{{$total * 1.18}}">
 
