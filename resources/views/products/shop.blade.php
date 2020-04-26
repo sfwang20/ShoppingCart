@@ -75,7 +75,7 @@
               </div>
               <div class="product-btn">
                 <input type="number" class="form-control cart-quantity" value="1" />
-                <button onclick="createCartItem( {{$product->id}},event )" class="btn btn-extra-small btn-dark-border  ">Add to cart<i class="fa fa-shopping-cart"></i>
+                <button onclick="createCartItem({{$product->id}}, event)" class="btn btn-extra-small btn-dark-border btn-addToCart">Add to cart<i class="fa fa-shopping-cart"></i>
                 </button>
               </div>
             </div>
