@@ -28,4 +28,5 @@
 <script src="/assets/vendor/wow/wow.min.js"></script>
 <script src="/assets/js/scripts.js"></script>
 <script src="/js/frontend.js"></script>
+<script src="/js/handlebars-v4.7.3.js"></script>
 <!-- endinject -->
