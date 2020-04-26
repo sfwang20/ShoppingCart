@@ -18,18 +18,18 @@
           <li class="nav-divider" aria-hidden="true"><a href="javascript:void(0)">|</a></li>
 
           <li class="cart-info">
-            <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>cart({{ $cart->products()->sum('quantity') }})</a>
-            @if(!$cart->products->isEmpty())
+            <a href="javascript:void(0)" class="cart-product-quantity"><i class="fa fa-shopping-cart"></i>cart({{ $cart->products()->sum('quantity') }})</a>
+          @if(!$cart->products->isEmpty())
             <div class="megamenu megamenu-quarter-width ">
               <div class="megamenu-row">
                 <div class="col12">
 
                   <!--cart-->
 
-                  <table class="table cart-table-list table-responsive">
+                  <table id="cart-table" class="table cart-table-list table-responsive">
 
                     @foreach($cart->products as $key => $product)
-                    <tr>
+                    <tr data-id="{{$product->id}}">
                       <td>
                         <a href="/products/{{ $product->id }}">
                           <img src="{{ $product->image}}" alt="" />
@@ -37,7 +37,7 @@
                       </td>
                       <td><a href="/products/{{ $product->id }}"> {{$product->name}} </a>
                       </td>
-                      <td>X{{ $product->pivot->quantity }}</td>
+                      <td class="quantity">X{{ $product->pivot->quantity }}</td>
                       <td>${{ $product->price * $product->pivot->quantity }}</td>
                       <td>
                         <a onclick="deleteCartItem( {{$product->id}} )" class="close">
@@ -49,7 +49,6 @@
                   </table>
 
                   <div class="s-cart-btn pull-right">
-                    <a href="/carts" class="btn btn-small btn-theme-color"> View cart</a>
                     <a href="/carts" class="btn btn-small btn-dark-solid"> Checkout</a>
                   </div>
                   <!--cart-->
@@ -57,7 +56,17 @@
                 </div>
               </div>
             </div>
-            @endif
+          @else
+            <div class="megamenu megamenu-quarter-width ">
+              <div class="megamenu-row">
+                <div class="col12">
+                  <table id="cart-table" class="table cart-table-list table-responsive">
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          @endif
           </li>
 
           <li>

@@ -12875,8 +12875,29 @@ createCartItem = function createCartItem(id, event) {
         id: id,
         quantity: quantity
       }
-    }).done(function () {
-      location.reload();
+    }).done(function (data) {
+      //update cart's' number
+      var r = /\d+/;
+      var s = $('.cart-product-quantity').html();
+      var quantity_origin = s.match(r);
+      quantity_origin = parseInt(quantity_origin, 10);
+      var add_quantity = parseInt(data.add_quantity, 10);
+      var quantity_new = quantity_origin + add_quantity;
+      $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart(' + quantity_new + ')+'); //insert a new product template and delete origin product html
+
+      var source = $('#cart_product-template').html();
+      var productTemplate = Handlebars.compile(source);
+      if (data.pivot.quantity == 1) $('#cart-table').find(".no-item").remove();
+
+      if (data.pivot.quantity > 1) {
+        $('#cart-table').find('[data-id="' + data.id + '"]').remove();
+      } // console.log(data);
+
+
+      data.quantity = data.pivot.quantity;
+      data.amount = data.quantity * data.price;
+      var productUI = productTemplate(data);
+      $('#cart-table').append(productUI);
     }).fail(function () {
       alert('You need to log in!');
     });
