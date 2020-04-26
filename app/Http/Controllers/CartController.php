@@ -21,7 +21,6 @@ class CartController extends Controller
   {
     //create or load cart table
     $cart = $this->getCart();
-
     //compare products in user's cart
     $product = $cart->products->find($request->id);
     //if cart has request's product -> find it and +1
@@ -35,6 +34,12 @@ class CartController extends Controller
     else {
       $cart->products()->attach($request->id, ['quantity' => $request->quantity]);
     }
+
+    $cart->load('products');
+    $product = $cart->products->find($request->id);
+    $product['add_quantity'] = $request->quantity;
+
+    return response()->json($product);
   }
 
   public function update(Request $request)
@@ -45,6 +50,7 @@ class CartController extends Controller
     $cart->products()->detach($request->id);
     $cart->products()->save($product, ['quantity' => $request->quantity]);
   }
+
   public function destroy(Request $request)
   {
     $cart = $this->getCart();
@@ -57,8 +63,7 @@ class CartController extends Controller
     if (Auth::user()->carts) {
       $cartId = Auth::user()->carts->max('id');
       $cart = Auth::user()->carts->find($cartId);
-    }
-    else {
+    } else {
       $cart = new Cart;
       $cart->user_id = Auth::id();
       $cart->save();
