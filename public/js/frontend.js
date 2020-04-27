@@ -12876,30 +12876,35 @@ createCartItem = function createCartItem(id, event) {
         quantity: quantity
       }
     }).done(function (data) {
-      //update cart's' number
+      //update cart's number
       var r = /\d+/;
       var s = $('.cart-product-quantity').html();
-      var quantity_origin = s.match(r);
-      quantity_origin = parseInt(quantity_origin, 10);
+      var quantity_origin = parseInt(s.match(r), 10);
       var add_quantity = parseInt(data.add_quantity, 10);
       var quantity_new = quantity_origin + add_quantity;
       $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart(' + quantity_new + ')+'); //insert a new product template and delete origin product html
 
       var source = $('#cart_product-template').html();
       var productTemplate = Handlebars.compile(source);
-      if (data.pivot.quantity == 1) $('#cart-table').find(".no-item").remove();
 
-      if (data.pivot.quantity > 1) {
-        $('#cart-table').find('[data-id="' + data.id + '"]').remove();
-      } // console.log(data);
+      if (data.pivot.quantity == 1 || data.firstTime == true) {
+        data.quantity = data.pivot.quantity;
+        data.amount = data.quantity * data.price;
+        var productUI = productTemplate(data);
+        $('#cart-table').append(productUI);
+      }
 
-
-      data.quantity = data.pivot.quantity;
-      data.amount = data.quantity * data.price;
-      var productUI = productTemplate(data);
-      $('#cart-table').append(productUI);
+      if (data.pivot.quantity > 1 && data.firstTime == false) {
+        var origin_html = $('#cart-table').find('[data-id="' + data.id + '"]').find('.quantity').html();
+        var product_quantity_origin = origin_html.match(r);
+        product_quantity_origin = parseInt(product_quantity_origin, 10);
+        product_quantity_new = product_quantity_origin + add_quantity;
+        var amount = product_quantity_new * data.price;
+        $('#cart-table').find('[data-id="' + data.id + '"]').find('.quantity').html('X' + product_quantity_new);
+        $('#cart-table').find('[data-id="' + data.id + '"]').find('.amount').html('$' + amount);
+      }
     }).fail(function () {
-      alert('You need to log in!');
+      alert('You need to log in! or Try again');
     });
   }, 10);
 };
@@ -12912,8 +12917,13 @@ deleteCartItem = function deleteCartItem(id) {
     data: {
       id: id
     }
-  }).done(function () {
-    location.reload();
+  }).done(function (data) {
+    var origin = $('#cart-table').find('[data-id="' + data.id + '"]').find('.quantity').html();
+    var r = /\d+/;
+    var origin_total = $('.cart-product-quantity').html();
+    var quantity_new = parseInt(origin_total.match(r), 10) - parseInt(origin.match(r), 10);
+    $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart(' + quantity_new + ')+');
+    $('#cart-table').find('[data-id="' + data.id + '"]').remove();
   });
 };
 
