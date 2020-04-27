@@ -38,7 +38,7 @@
                       <td><a href="/products/{{ $product->id }}"> {{$product->name}} </a>
                       </td>
                       <td class="quantity">X{{ $product->pivot->quantity }}</td>
-                      <td>${{ $product->price * $product->pivot->quantity }}</td>
+                      <td class="amount">${{ $product->price * $product->pivot->quantity }}</td>
                       <td>
                         <a onclick="deleteCartItem( {{$product->id}} )" class="close">
                           <img src="/assets/img/product/close.png" alt="" />
