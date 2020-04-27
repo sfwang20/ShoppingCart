@@ -12867,7 +12867,9 @@ $.ajaxSetup({
 createCartItem = function createCartItem(id, event) {
   var actionUrl = '/carts';
   setTimeout(function () {
-    if ($(event.target).is("button")) var quantity = $(event.target).closest('.product-btn').find('input').val();else var quantity = $('#quantity').find('input').val();
+    //shop page
+    if ($(event.target).is("button")) var quantity = $(event.target).closest('.product-btn').find('input').val(); //shop-single page
+    else var quantity = $('#quantity').find('input').val();
     $.ajax({
       method: "POST",
       url: actionUrl,
@@ -12909,22 +12911,41 @@ createCartItem = function createCartItem(id, event) {
   }, 10);
 };
 
-deleteCartItem = function deleteCartItem(id) {
+deleteCartItem = function deleteCartItem(id, event) {
   var actionUrl = '/carts/' + id;
-  $.ajax({
-    method: "DELETE",
-    url: actionUrl,
-    data: {
-      id: id
-    }
-  }).done(function (data) {
-    var origin = $('#cart-table').find('[data-id="' + data.id + '"]').find('.quantity').html();
-    var r = /\d+/;
-    var origin_total = $('.cart-product-quantity').html();
-    var quantity_new = parseInt(origin_total.match(r), 10) - parseInt(origin.match(r), 10);
-    $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart(' + quantity_new + ')+');
-    $('#cart-table').find('[data-id="' + data.id + '"]').remove();
-  });
+  setTimeout(function () {
+    $.ajax({
+      method: "DELETE",
+      url: actionUrl,
+      data: {
+        id: id
+      }
+    }).done(function (data) {
+      //cart page
+      if ($(event.target).is("button")) {
+        //To solve: cannot work, sth is wrong
+        var cartTotal = $('#price').find('.total').find('.num').html();
+        cartTotal = parseInt(cartTotal.match(/\d+/), 10);
+        var productTotal = $('.cart-table').find('[data-id="' + data.id + '"]').find('.product-total').html();
+        productTotal = parseInt(productTotal.match(/\d+/), 10);
+        var newTotal = cartTotal - productTotal;
+        $('#price').find('.subTotal').val('<span> Sub Total </span> $ ' + newTotal);
+        $('#price').find('.ecoTax').val('<span> Eco Tax (-2%) </span> $ ' + newTotal * 0.02);
+        $('#price').find('.vat').val('<span> VAT (20%) </span> $ ' + newTotal * 0.2);
+        $('#price').find('.total').val('<span><strong class="cart-total"> Total </strong></span>  <strong class="cart-total num">$' + newTotal * 1.18 + '</strong>'); //To solve: sometimes it won't work (but header's cart actutally delete)
+
+        $('.cart-table').find('[data-id="' + data.id + '"]').remove();
+      }
+
+      var origin = $('#cart-table').find('[data-id="' + data.id + '"]').find('.quantity').html();
+      var r = /\d+/;
+      var origin_total = $('.cart-product-quantity').html();
+      var quantity_new = parseInt(origin_total.match(r), 10) - parseInt(origin.match(r), 10); //update quantity in cart()+
+
+      $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart(' + quantity_new + ')+');
+      $('#cart-table').find('[data-id="' + data.id + '"]').remove();
+    });
+  }, 100);
 };
 
 updateCartItem = function updateCartItem(id, event) {
