@@ -60,6 +60,7 @@ class CartController extends Controller
   {
     $cart = $this->getCart();
     $cart->products()->detach($request->id);
+    // $request->id = (int)$request->id;
 
     return response()->json($request);
   }
