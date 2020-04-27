@@ -9,7 +9,7 @@
     <td><a href="/products/@{{ id }}"> @{{name}} </a>
     </td>
     <td class="quantity">X@{{quantity}}</td>
-    <td>$@{{amount}}</td>
+    <td class="amount">$@{{amount}}</td>
     <td>
       <a onclick="deleteCartItem( @{{ id }} )" class="close">
         <img src="/assets/img/product/close.png" alt="" />
