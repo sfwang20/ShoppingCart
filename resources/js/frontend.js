@@ -36,9 +36,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  createCartItem = function(id, event) {
    let actionUrl = '/carts';
    setTimeout(function(){
-
+     //shop page
      if ($(event.target).is("button"))
        var quantity = $(event.target).closest('.product-btn').find('input').val();
+     //shop-single page
      else
        var quantity = $('#quantity').find('input').val();
 
@@ -86,25 +87,40 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
       }, 10);
   };
 
-  deleteCartItem = function(id) {
+  deleteCartItem = function(id, event) {
     let actionUrl = '/carts/' + id;
-    $.ajax({
-       method: "DELETE",
-       url: actionUrl,
-       data: { id }
-     })
-       .done(function(data) {
-         let origin = $('#cart-table').find('[data-id="'+ data.id + '"]').find('.quantity').html();
-         let r = /\d+/;
+    setTimeout(function(){
+      $.ajax({
+         method: "DELETE",
+         url: actionUrl,
+         data: { id }
+       })
+         .done(function(data) {
+           //cart page
+           if ($(event.target).is("button")){
+             //To solve: cannot work, sth is wrong
+             let cartTotal = $('#price').find('.total').find('.num').html();
+             cartTotal = parseInt(cartTotal.match(/\d+/), 10);
+             let productTotal = $('.cart-table').find('[data-id="'+ data.id + '"]').find('.product-total').html();
+             productTotal = parseInt(productTotal.match(/\d+/) ,10);
+             let newTotal = cartTotal - productTotal;
+             $('#price').find('.subTotal').val('<span> Sub Total </span> $ ' + newTotal);
+             $('#price').find('.ecoTax').val('<span> Eco Tax (-2%) </span> $ ' + newTotal*0.02);
+             $('#price').find('.vat').val('<span> VAT (20%) </span> $ ' + newTotal*0.2);
+             $('#price').find('.total').val('<span><strong class="cart-total"> Total </strong></span>  <strong class="cart-total num">$' + newTotal*1.18 + '</strong>');
+             //To solve: sometimes it won't work (but header's cart actutally delete)
+             $('.cart-table').find('[data-id="'+ data.id + '"]').remove();
+           }
 
-         let origin_total = $('.cart-product-quantity').html();
-
-
-         let quantity_new = parseInt(origin_total.match(r), 10) - parseInt(origin.match(r), 10);
-
-         $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart('+ quantity_new +')+');
-         $('#cart-table').find('[data-id="'+ data.id + '"]').remove();
-       });
+           let origin = $('#cart-table').find('[data-id="'+ data.id + '"]').find('.quantity').html();
+           let r = /\d+/;
+           let origin_total = $('.cart-product-quantity').html();
+           let quantity_new = parseInt(origin_total.match(r), 10) - parseInt(origin.match(r), 10);
+           //update quantity in cart()+
+           $('.cart-product-quantity').html('<i class="fa fa-shopping-cart"></i>cart('+ quantity_new +')+');
+           $('#cart-table').find('[data-id="'+ data.id + '"]').remove();
+         });
+      }, 100);
   };
 
   updateCartItem = function(id, event) {
