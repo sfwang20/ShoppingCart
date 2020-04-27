@@ -39,7 +39,7 @@
             <tbody>
             @if($cart->products())
               @foreach($cart->products as $key => $product)
-              <tr>
+              <tr data-id="{{$product->id}}">
                 <td>
                   <div class="cart-img">
                     <a href="/products/{{ $product->id }}">
@@ -53,14 +53,14 @@
                 <td>
                   <div class="cart-action">
                     <input type="number" class="form-control cart-quantity" value="{{ $product->pivot->quantity }}" />
-                    <button class="btn btn-default" type="submit" onclick="updateCartItem( {{$product->id}} ,event)"><i class="fa fa-refresh"></i>
+                    <button class="btn btn-default" type="submit" onclick="updateCartItem({{$product->id}} ,event)"><i class="fa fa-refresh"></i>
                     </button>
-                    <button class="btn btn-default" type="submit" onclick="deleteCartItem( {{$product->id}} )"><i class="fa fa-trash-o"></i>
+                    <button class="btn btn-default" type="submit" onclick="deleteCartItem({{$product->id}}, event)"><i class="fa fa-trash-o"></i>
                     </button>
                   </div>
                 </td>
                 <td>$ {{ $product->price }}</td>
-                <td>$ {{ $product->price * $product->pivot->quantity }}</td>
+                <td class="product-total">$ {{ $product->price * $product->pivot->quantity }}</td>
               </tr>
               @endforeach
             @endif
@@ -155,11 +155,11 @@
           </dl>
           <!-- accordion 2 end-->
 
-          <ul class="portfolio-meta m-bot-30 pull-right">
-            <li><span> Sub Total </span> $ {{$total}}</li>
-            <li><span> Eco Tax (-2%)	 </span> $ {{$total*0.02}}</li>
-            <li><span> VAT (20%) </span> $ {{$total*0.2}}</li>
-            <li><span><strong class="cart-total"> Total </strong></span>  <strong class="cart-total">$ {{$total*1.18}} </strong>
+          <ul id="price" class="portfolio-meta m-bot-30 pull-right">
+            <li class="subTotal"><span> Sub Total </span> $ {{$total}}</li>
+            <li class="ecoTax"><span> Eco Tax (-2%) </span> $ {{$total*0.02}}</li>
+            <li class="vat"><span> VAT (20%) </span> $ {{$total*0.2}}</li>
+            <li class="total"><span><strong class="cart-total"> Total </strong></span>  <strong class="cart-total num">$ {{$total*1.18}} </strong>
             </li>
           </ul>
 
