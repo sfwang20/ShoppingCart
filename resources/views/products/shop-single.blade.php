@@ -38,9 +38,9 @@
                     <img src="{{ $product->image_alt }}" alt="" />
                   </a>
                 </li>
-                <!-- <li data-thumb="assets/img/product/6.jpg">
+                <!-- <li data-thumb="/assets/img/product/6.jpg">
                   <a href="javascript:;" title="Massive UI Components">
-                    <img src="assets/img/product/6.jpg" alt="" />
+                    <img src="/assets/img/product/6.jpg" alt="" />
                   </a>
                 </li> -->
               </ul>
@@ -89,7 +89,7 @@
               <label>Quantity</label>
             </li>
             <li id="quantity">
-              <input type="number" value="1" name="quantity" />
+              <input type="number" value="1" name="quantity" min="1"/>
             </li>
 
           </li>
@@ -164,7 +164,7 @@
                 <!-- comment item start-->
                 <li class="media">
                   <a class="pull-left" href="#">
-                    <img class="media-object review-avatar" src="assets/img/post/a1.png" alt="">
+                    <img class="media-object review-avatar" src="/assets/img/post/a1.png" alt="">
                   </a>
                   <div class="media-body">
                     <div class="comment-info">
@@ -191,7 +191,7 @@
                 <!-- comment item -->
                 <li class="media">
                   <a class="pull-left" href="#">
-                    <img class="media-object review-avatar" src="assets/img/post/a1.png" alt="">
+                    <img class="media-object review-avatar" src="/assets/img/post/a1.png" alt="">
                   </a>
                   <div class="media-body">
                     <div class="comment-info">
@@ -286,96 +286,96 @@
       <div id="portfolio-carousel" class=" portfolio-with-title col-3 ">
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/1.jpg" alt="">
+            <img src="/assets/img/product/1.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/1.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/1.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/1.jpg" class="popup-link" title="lightbox view">CROPPED SKINNY ISA JEANS</a></h4>
+            <h4><a href="/assets/img/product/1.jpg" class="popup-link" title="lightbox view">CROPPED SKINNY ISA JEANS</a></h4>
             <p class="txt-xl">$59.00</p>
           </div>
         </div>
 
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/2.jpg" alt="">
+            <img src="/assets/img/product/2.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/2.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/2.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/2.jpg" class="popup-link" title="lightbox view">denouncing pleasure</a></h4>
+            <h4><a href="/assets/img/product/2.jpg" class="popup-link" title="lightbox view">denouncing pleasure</a></h4>
             <p class="txt-xl">$49.00</p>
           </div>
         </div>
 
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/3.jpg" alt="">
+            <img src="/assets/img/product/3.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/3.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/3.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/3.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
+            <h4><a href="//assets/img/product/3.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
             <p class="txt-xl">$69.00</p>
           </div>
         </div>
 
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/4.jpg" alt="">
+            <img src="/assets/img/product/4.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/4.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/4.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/4.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
+            <h4><a href="/assets/img/product/4.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
             <p class="txt-xl">$79.00</p>
           </div>
         </div>
 
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/5.jpg" alt="">
+            <img src="/assets/img/product/5.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/5.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/5.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/5.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
+            <h4><a href="/assets/img/product/5.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
             <p class="txt-xl">$69.00</p>
           </div>
         </div>
 
         <div class="portfolio-item">
           <div class="thumb">
-            <img src="assets/img/product/6.jpg" alt="">
+            <img src="/assets/img/product/6.jpg" alt="">
             <div class="portfolio-hover">
               <div class="action-btn">
-                <a href="assets/img/product/6.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
+                <a href="/assets/img/product/6.jpg" class="popup-link" title="lightbox view"> <i class="icon-basic_magnifier"></i>
                 </a>
               </div>
             </div>
           </div>
           <div class="portfolio-title">
-            <h4><a href="assets/img/product/6.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
+            <h4><a href="/assets/img/product/6.jpg" class="popup-link" title="lightbox view">annoyances accepted</a></h4>
             <p class="txt-xl">$59.00</p>
           </div>
         </div>

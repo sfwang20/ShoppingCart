@@ -74,7 +74,7 @@
                 <i class="fa fa-star-o"></i>
               </div>
               <div class="product-btn">
-                <input type="number" class="form-control cart-quantity" value="1" />
+                <input type="number" class="form-control cart-quantity" value="1" min="1"/>
                 <button onclick="createCartItem({{$product->id}}, event)" class="btn btn-extra-small btn-dark-border btn-addToCart">Add to cart<i class="fa fa-shopping-cart"></i>
                 </button>
               </div>
