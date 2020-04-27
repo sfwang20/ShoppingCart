@@ -40,7 +40,7 @@
                       <td class="quantity">X{{ $product->pivot->quantity }}</td>
                       <td class="amount">${{ $product->price * $product->pivot->quantity }}</td>
                       <td>
-                        <a onclick="deleteCartItem( {{$product->id}} )" class="close">
+                        <a onclick="deleteCartItem({{$product->id}}, event)" class="close">
                           <img src="/assets/img/product/close.png" alt="" />
                         </a>
                       </td>
@@ -63,6 +63,9 @@
                   <table id="cart-table" class="table cart-table-list table-responsive">
 
                   </table>
+                  <div class="s-cart-btn pull-right">
+                    <a href="/carts" class="btn btn-small btn-dark-solid"> Checkout</a>
+                  </div>
                 </div>
               </div>
             </div>
